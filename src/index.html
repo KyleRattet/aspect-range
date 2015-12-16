@@ -1,100 +1,81 @@
-<!DOCTYPE HTML>
-<HTML ng-app="MyApp">
-<head>
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js" type="text/javascript"></script>
+<!DOCTYPE html>
+<html ng-app="MyApp">
+  <head>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js" type="text/javascript"></script>
 
-<!--Theme-->
-<link href="http://cdn.wijmo.com/themes/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
+  <!--Theme-->
+  <link href="http://cdn.wijmo.com/themes/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
 
-<!--Wijmo Widgets CSS-->
-<link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20153.83.min.css" rel="stylesheet" type="text/css" />
+  <!--Wijmo Widgets CSS-->
+  <link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20153.83.min.css" rel="stylesheet" type="text/css" />
 
-<!-- Wijmo Scripts -->
-<script src="http://cdn.wijmo.com/jquery.wijmo-open.all.3.20153.83.min.js" type="text/javascript"></script>
-<script src="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20153.83.min.js" type="text/javascript"></script>
+  <!-- Wijmo Scripts -->
+  <script src="http://cdn.wijmo.com/jquery.wijmo-open.all.3.20153.83.min.js" type="text/javascript"></script>
+  <script src="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20153.83.min.js" type="text/javascript"></script>
 
-<!-- Angular -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-<script src="http://cdn.wijmo.com/interop/angular.wijmo.3.20153.83.min.js"></script>
+  <!-- Angular -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+  <script src="http://cdn.wijmo.com/interop/angular.wijmo.3.20153.83.min.js"></script>
 
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/app.js"></script>
-<link rel="stylesheet" type="text/css" href="css/main.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 
-</head>
-<body ng-controller="MyController">
+  </head>
+  <body ng-controller="MyController">
+    <h3 class="text-center">Aspect Range</h3>
 
-<div class="row">
-  <div class="col-xs-4 col-xs-offset-2">
-    <label>Boundary 1</label>
-    <select ng-model="propsStart.valueStart" class="form-control">
-      <option value="">---Select Aspect---</option>
-      <option ng-repeat="direction in directions" value="{{direction.value}}">{{direction.name}}</option>
-    </select>
-  </div>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <label>Boundary 1:</label>
+        <select ng-model="compass.start">
+          <option value="">---Select Aspect---</option>
+          <option ng-repeat="direction in directions" value="{{direction.value}}">{{direction.name}}</option>
+        </select>
+      </div>
 
-  <div class="col-xs-4">
-    <label>Boundary 2</label>
-    <select ng-model="propsStart.valueEnd" class="form-control">
-      <option value="">---Select Aspect---</option>
-      <option ng-repeat="direction in directions" value="{{direction.value}}">{{direction.name}}</option>
-    </select>
-  </div>
-</div>
-
-<div class="row">
-
-<div class="col-xs-4 col-xs-offset-4">
-    <div class="startAspect" ng-show="propsStart.valueEnd ==''">
-    <wij-radialgauge value="propsStart.valueStart" max="360" min="0" sweep-angle="360" start-angle="90" style="height:300px; width: 300px" step="30">
-        <ranges>
-            <range labels="Hi" start-value="{{propsStart.valueStart}}" end-value="{{propsStart.valueEnd}}" start-distance="0.64" end-distance="0.64" start-width="10" end-width="10" stroke-width="1.5">
-                <style fill="none" stroke="none"></style>
-            </range>
-            <range start-value="{{propsStart.valueStart}}" end-value="{{propsStart.valueEnd}}" start-distance="0.58" end-distance="0.58" start-width="10" end-width="10">
-                <style fill="#FFCB00" stroke="#FFCB00" stroke="none"></style>
-            </range>
-            <range start-value="90" end-value="180" start-distance="0.58" end-distance="0.58" start-width="10" end-width="10">
-                <style fill="Yellow" stroke="Yellow" stroke-width="1.5"></style>
-            </range>
-            <range start-value="180" end-value="270" start-distance="0.58" end-distance="0.58" start-width="10" end-width="10">
-                <style fill="Orange" stroke="Orange" stroke-width="1.5"></style>
-            </range>
-            <range start-value="270" end-value="360" start-distance="0.58" end-distance="0.58" start-width="10" end-width="10">
-                <style fill="Red" stroke="Red" stroke-width="1.5"></style>
-            </range>
-        </ranges>
-    </wij-radialgauge>
+      <div class="col-xs-12 text-center">
+        <label>Boundary 2:</label>
+        <select ng-model="compass.end">
+          <option value="">---Select Aspect---</option>
+          <option ng-repeat="direction in directions" value="{{direction.value}}">{{direction.name}}</option>
+        </select>
+      </div>
     </div>
-</div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4 text-center">
+          <div class="startAspect" ng-show="compass.end ==''">
+            <label>Filtered Aspect Range</label>
+              <wij-radialgauge class="col-xs-3 col-xs-offset-4" value="compass.start" max="360" min="0" sweep-angle="360" start-angle="90" style="height:300px; width: 300px" step="30">
+                  <ranges>
+                      <range start-value="{{compass.start}}" end-value="{{compass.end}}"></range>
+                  </ranges>
+              </wij-radialgauge>
+          </div>
+      </div>
 
 
-<div class="col-xs-4 col-xs-offset-4">
-    <div class="endAspect" ng-hide="propsStart.valueEnd==''">
-    <wij-radialgauge value="{{propsStart.valueEnd}}"  max="360" min="0" sweep-angle="360" start-angle="90" style="height:300px; width: 300px">
-        <ranges>
-            <range start-value="{{propsStart.valueStart}}" end-value="{{propsStart.valueEnd}}" start-distance="0.58" end-distance="0.58" start-width="10" end-width="10" >
-                <style fill="#FFCB00" stroke="#FFCB00" stroke-width="2.5"></style>
-            </range>
-            <range start-value="{{props.ranges.two.min}}" end-value="{{props.ranges.two.max}}" start-distance="0.58" end-distance="0.58" start-width="10" end-width="10">
-                <style fill="{{props.ranges.two.color}}" stroke="Yellow" stroke-width="1.5"></style>
-            </range>
-            <range start-value="{{props.ranges.three.min}}" end-value="{{props.ranges.three.max}}" start-distance="0.58" end-distance="0.58" start-width="10" end-width="10">
-                <style fill="{{props.ranges.three.color}}" stroke="Orange" stroke-width="1.5"></style>
-            </range>
-            <range start-value="{{props.ranges.four.min}}" end-value="{{props.ranges.four.max}}" start-distance="0.58" end-distance="0.58" start-width="10" end-width="10">
-                <style fill="{{props.ranges.four.color}}" stroke="Red" stroke-width="1.5"></style>
-            </range>
-        </ranges>
-    </wij-radialgauge>
+      <div class="col-xs-4 col-xs-offset-4 text-center">
+          <div class="endAspect" ng-hide="compass.end==''">
+            <label>Filtered Aspect Range</label>
+              <wij-radialgauge class="col-xs-3 col-xs-offset-4"value="{{compass.end}}"  max="360" min="0" sweep-angle="360" start-angle="90" style="height:300px; width: 300px">
+                  <ranges>
+                      <range start-value="{{compass.start}}" end-value="{{compass.end}}" start-distance="0.15" end-distance="0.15" start-width="80" end-width="80" >
+                          <style fill="#FFCB00" stroke="#FFCB00" stroke-width="80"></style>
+                      </range>
+                  </ranges>
+              </wij-radialgauge>
+          </div>
+      </div>
+
     </div>
-</div>
+  </body>
 
-</div>
-</body>
-
-</HTML>
+</html>

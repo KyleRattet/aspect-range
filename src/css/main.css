@@ -1,3 +1,7 @@
+body {
+  background-color: #999999
+}
+
 circle.wijmo-wijradialgauge-face {
   fill: #F5F5F5;
   stroke: #222222;
@@ -24,4 +28,10 @@ circle.wijmo-wijradialgauge-face {
   stroke: #222222 !important;
   fill: #666666 !important;
   offset: 50;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

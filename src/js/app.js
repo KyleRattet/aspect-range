@@ -1,24 +1,13 @@
 var app = angular.module("MyApp", ["wijmo"]);
+
     function MyController($scope) {
 
-        $scope.propsStart = {
-          valueStart: 0,
-          valueEnd: 0,
+        $scope.compass = {
+          start: 0,
+          end: 0,
           max:360,
-          min: 0,
-          isUpdating:true,
-          ranges: {
-              one: { min: 0, max: 90, color: 'yellow' },
-              two: { min: 90, max: 180, color: 'orange' },
-              three: { min: 180, max: 270, color: 'red' },
-              four: { min: 270, max: 360, color: 'gray' }
-          },
-          labels: {
-              one: "Hi"
-          },
-
+          min: 0
         };
-
 
         $scope.directions = [
           {name: "North", value: "0"},
