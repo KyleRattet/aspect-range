@@ -1,1 +1,27 @@
-/* add custom styles */
+circle.wijmo-wijradialgauge-face {
+  fill: #F5F5F5;
+  stroke: #222222;
+  stroke-width: 10;
+
+}
+
+.wijmo-wijradialgauge-label {
+  stroke: #222222 !important;
+  fill: #666666;
+}
+
+.wijmo-wijradialgauge-mark {
+  stroke: #222222 !important;
+  fill: #666666;
+}
+
+.wijmo-wijradialgauge-cap {
+  stroke: #222222 !important;
+  fill: #666666;
+}
+
+.wijmo-wijradialgauge-pointer {
+  stroke: #222222 !important;
+  fill: #666666 !important;
+  offset: 50;
+}
